@@ -1,0 +1,18 @@
+
+
+// creating courses table
+CREATE TABLE courses (
+	id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    dept_id INT NOT NULL,
+    FOREIGN KEY (dept_id) REFERENCES departments(id),
+    PRIMARY KEY (id)
+);
+
+
+CREATE TABLE enrollments (
+	course_id INT NOT NULL,
+    sid INT NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES courses(id),
+    FOREIGN KEY (sid) REFERENCES users(id)
+);
