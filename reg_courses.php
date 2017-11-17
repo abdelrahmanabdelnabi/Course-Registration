@@ -29,19 +29,20 @@
 				$result = mysqli_query($db,$sql);
 
 		// get this student's enrollments
-				$enrol_query = "SELECT enrollments.*, courses.name FROM enrollments inner JOIN courses on enrollments.course_id=courses.id  WHERE sid=".$sid;
+				$enrol_query = "SELECT enrollments.*, courses.* FROM enrollments inner JOIN courses on enrollments.course_id=courses.id  WHERE sid=".$sid;
 				$enrols = mysqli_query($db, $enrol_query);
+				$table_html_schema = '<tr><th>Course</th><th>Description</th><th>Instructor</th><th>Credit Hours</th><th>registration</th></tr>';
 
 				if(mysqli_num_rows($enrols) === 0) {
 					echo "<h2>You are currently not enrolled in any course</h2>";
 				} else {
 					echo "<h2>Your enrollments</h2>";
 					echo '<table class="table table-hover">';
-					echo '<tr><th>Course</th><th>un-register</th></tr>';
+					echo $table_html_schema;
 
 					while($row = mysqli_fetch_array($enrols,MYSQLI_ASSOC)) {
 						$href ="enrol.php?course_id=".$row['course_id']."&sid=".$sid."&enrol=false";
-						echo '<tr><td>'.$row['name'].'</td><td><a class="btn btn-danger" href="'.$href.'">unenrol</a></td></tr>';
+						echo '<tr><td>'.$row['name'].'</td><td>'.$row['description'].'</td><td>'.$row['instructor_name'].'</td><td>'.$row['credit_hours'].'</td><td><a class="btn btn-danger" href="'.$href.'">unenrol</a></td></tr>';
 					}
 
 					echo '</table>';		
@@ -49,11 +50,10 @@
 
 				echo '<h2>Available Courses</h2>';
 				echo '<table class="table table-hover">';
-				echo '<tr>';
-				echo '<th>Course</th><th>register</th>';
-				echo '</tr>';
+				echo $table_html_schema;
+				
 				while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
-					echo '<tr><td>'.$row['name'].'</td><td><a class="btn btn-primary" href="enrol.php?course_id='.$row['id'].'&sid='.$sid.'&enrol=true'.'">enrol</a></td></tr>';
+					echo '<tr><td>'.$row['name'].'</td><td>'.$row['description'].'</td><td>'.$row['instructor_name'].'</td><td>'.$row['credit_hours'].'</td><td><a class="btn btn-primary" href="enrol.php?course_id='.$row['id'].'&sid='.$sid.'&enrol=true'.'">enrol</a></td></tr>';
 				}
 
 				echo '</table>';
