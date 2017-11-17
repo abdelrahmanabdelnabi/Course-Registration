@@ -12,8 +12,9 @@
 	<div class="=container">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1>Homepage</h1>
+				<h1><a href="welcome.php">Homepage</a></h1>
 				<h1>Courses</h1>
+				<h1><a href="logout.php">Logout</a></h1>
 			</div>
 			<div class="col-lg-9">
 
@@ -35,24 +36,24 @@
 					echo "<h2>You are currently not enrolled in any course</h2>";
 				} else {
 					echo "<h2>Your enrollments</h2>";
-					echo '<table class="table">';
+					echo '<table class="table table-hover">';
 					echo '<tr><th>Course</th><th>un-register</th></tr>';
 
 					while($row = mysqli_fetch_array($enrols,MYSQLI_ASSOC)) {
 						$href ="enrol.php?course_id=".$row['course_id']."&sid=".$sid."&enrol=false";
-						echo '<tr><td>'.$row['name'].'</td><td><a href="'.$href.'">unenrol</a></td></tr>';
+						echo '<tr><td>'.$row['name'].'</td><td><a class="btn btn-danger" href="'.$href.'">unenrol</a></td></tr>';
 					}
 
 					echo '</table>';		
 				}
 
 				echo '<h2>Available Courses</h2>';
-				echo '<table class="table">';
+				echo '<table class="table table-hover">';
 				echo '<tr>';
 				echo '<th>Course</th><th>register</th>';
 				echo '</tr>';
 				while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
-					echo '<tr><td>'.$row['name'].'</td><td><a href="enrol.php?course_id='.$row['id'].'&sid='.$sid.'&enrol=true'.'">enrol</a></td></tr>';
+					echo '<tr><td>'.$row['name'].'</td><td><a class="btn btn-primary" href="enrol.php?course_id='.$row['id'].'&sid='.$sid.'&enrol=true'.'">enrol</a></td></tr>';
 				}
 
 				echo '</table>';

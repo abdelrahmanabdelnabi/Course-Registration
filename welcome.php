@@ -14,7 +14,7 @@
       <?php
       	if($_SESSION['dept'] !== '') {
       		echo "<h2>your department is ".$_SESSION['dept']." </h2>";
-      		echo '<h3>go to course selection <a href="/database/lab1/reg_courses.php?dept_id='.$_SESSION['dept_id'].'&sid='.$_SESSION['user_id'].'">here</a></h3>';
+      		echo '<h3>go to course selection <a href="/database/lab1/reg_courses.php">here</a></h3>';
       
       	} else { // no deptartment.. select department
       		echo "<h2>Please select your department</h2>";

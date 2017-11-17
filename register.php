@@ -67,7 +67,7 @@
                   <input type = "submit" value = "Register"/><br />
                </form>
                
-               <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $_SESSION['message']; ?></div>
+               <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php if(isset($_SESSION['message']))echo $_SESSION['message']; ?></div>
 					
             </div>
 				
