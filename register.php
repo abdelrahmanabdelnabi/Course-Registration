@@ -8,6 +8,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$myname = mysqli_real_escape_string($db,$_POST['name']);
 	$myemail = mysqli_real_escape_string($db,$_POST['email']);
 	$mypassword = mysqli_real_escape_string($db,$_POST['password']);
+	$hashed_password = md5($mypassword);
 
 	$sql = "SELECT id FROM users WHERE email = '$myemail'";
 	$result = mysqli_query($db,$sql);
@@ -19,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       	$error = "email already in use";
       	//header("location: register.php");
       }else {
-      	$insert = "INSERT INTO users (name, email, password) VALUES ('$myname','$myemail','$mypassword');";
+      	$insert = "INSERT INTO users (name, email, password) VALUES ('$myname','$myemail','$hashed_password');";
 
       	if(mysqli_query($db, $insert)) {
       		print_r("account created succesfully");

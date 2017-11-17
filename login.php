@@ -7,8 +7,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
    $myemail = mysqli_real_escape_string($db,$_POST['email']);
    $mypassword = mysqli_real_escape_string($db,$_POST['password']);
+   $hashed_password = md5($mypassword);
 
-   $sql = "SELECT * FROM users WHERE email = '$myemail' and password = '$mypassword'";
+   $sql = "SELECT * FROM users WHERE email = '$myemail' and password = '$hashed_password'";
    $result = mysqli_query($db,$sql);
 
    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
