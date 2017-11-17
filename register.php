@@ -12,11 +12,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sql = "SELECT id FROM users WHERE email = '$myemail'";
 	$result = mysqli_query($db,$sql);
 	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+	$count = mysqli_num_rows($result);
 
       if($count == 1) { // email already in use
       	$_SESSION['message'] = "email already in use";
-      	$error = "Your email is already in use";
-      	header("location: register.php");
+      	$error = "email already in use";
+      	//header("location: register.php");
       }else {
       	$insert = "INSERT INTO users (name, email, password) VALUES ('$myname','$myemail','$mypassword');";
 
