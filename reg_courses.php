@@ -11,12 +11,12 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-md-3">
 				<h1><a href="welcome.php">Homepage</a></h1>
 				<h1>Courses</h1>
 				<h1><a href="logout.php">Logout</a></h1>
 			</div>
-			<div class="col-sm-8">
+			<div class="col-md-9">
 
 				<?php
 				require_once 'session.php';

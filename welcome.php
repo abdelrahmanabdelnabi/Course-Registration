@@ -12,7 +12,7 @@ include 'bootstrap.css';
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-md-3">
 				<h1>Welcome <?php echo $_SESSION['name']; ?></h1>
 				<?php  if($_SESSION['dept'] !== '') {
 					echo '<h1><a href="/database/lab1/reg_courses.php">Courses</a></h1>';
@@ -21,7 +21,7 @@ include 'bootstrap.css';
 				<h1><a href = "logout.php">Sign Out</a></h1>
 
 			</div>
-			<div class="col-sm-8">
+			<div class="col-md-9">
 				<?php
 				if($_SESSION['dept'] !== '') {
 					echo "<h2>your department is ".$_SESSION['dept']." </h2>";
