@@ -11,7 +11,7 @@
 		// user data update successfully
 		echo "user data updated successfully";
 		// update session variables
-		$_SESSION['dept'] = $dept_id;
+		$_SESSION['dept_id'] = $dept_id;
 
 		$sql = "SELECT name from departments WHERE id=$dept_id";
 		$result = mysqli_query($db, $sql);
