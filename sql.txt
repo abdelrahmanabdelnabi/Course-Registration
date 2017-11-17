@@ -1,18 +1,42 @@
 
 
-// creating courses table
-CREATE TABLE courses (
-	id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    dept_id INT NOT NULL,
-    FOREIGN KEY (dept_id) REFERENCES departments(id),
-    PRIMARY KEY (id)
-);
-
-
-CREATE TABLE enrollments (
+// enrollments
+CREATE TABLE `enrollments` (
 	course_id INT NOT NULL,
     sid INT NOT NULL,
     FOREIGN KEY (course_id) REFERENCES courses(id),
-    FOREIGN KEY (sid) REFERENCES users(id)
+    FOREIGN KEY (sid) REFERENCES users(id),
+    PRIMARY KEY (`course_id`,`sid`)
 );
+
+// creating courses table
+CREATE TABLE `courses` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `instructor_name` varchar(255) NOT NULL,
+  `credit_hours` smallint(6) NOT NULL,
+  `dept_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY `dept_id` (`dept_id`)
+);
+
+// departments
+CREATE TABLE `departments` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+// users table
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `registered_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dept_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+)
