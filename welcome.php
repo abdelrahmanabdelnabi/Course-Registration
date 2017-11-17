@@ -15,7 +15,7 @@ include 'bootstrap.css';
 			<div class="col-sm-4">
 				<h1>Welcome <?php echo $_SESSION['name']; ?></h1>
 				<?php  if($_SESSION['dept'] !== '') {
-					echo '<h1><a href="/database/lab1/reg_courses.php">Courses</a></h1>';  
+					echo '<h1><a href="/database/lab1/reg_courses.php">Courses</a></h1>';
 				}
 				?>
 				<h1><a href = "logout.php">Sign Out</a></h1>
