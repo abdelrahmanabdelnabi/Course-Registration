@@ -9,14 +9,14 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="=container">
+	<div class="container">
 		<div class="row">
-			<div class="col-lg-3">
+			<div class="col-sm-4">
 				<h1><a href="welcome.php">Homepage</a></h1>
 				<h1>Courses</h1>
 				<h1><a href="logout.php">Logout</a></h1>
 			</div>
-			<div class="col-lg-9">
+			<div class="col-sm-8">
 
 				<?php
 				require_once 'session.php';
