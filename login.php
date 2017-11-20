@@ -51,6 +51,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+   <script src="http://code.jquery.com/jquery-1.4.min.js" type="text/javascript"></script>
+   <script type="text/javascript">
+         $(document).ready(function(){
+            $("#register").click(function(){
+                $('#result').load('register.php');
+              //alert("Thanks for visiting!");
+            }); 
+          });
+    </script>
+   
 </head>
 
 <body>
@@ -84,7 +94,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       echo '<div class="alert alert-danger">'.$error.'</div>';
 ?>
 </form>
-<h5>Don't have an account? sign-up <a href="register.php">here</a></h5>
+<h5>Don't have an account? sign-up <input type='button' value='Register now !' id="register"></h5>
+<div id="result" style="clear:both;"></div>
 
 </div>
 

@@ -23,6 +23,11 @@
 
 				$dept_id = $_SESSION['dept_id'];
 				$sid = $_SESSION['user_id'];
+				
+				if($dept_id==null){
+					header("Location: welcome.php"); /* Redirect browser */
+					exit();
+				}
 
 		// get the list of courses available in this department
 				$sql = "SELECT * FROM courses WHERE dept_id = ".$dept_id;
@@ -51,9 +56,19 @@
 				echo '<h2>Available Courses</h2>';
 				echo '<table class="table table-hover">';
 				echo $table_html_schema;
-				
+				$enrols = mysqli_query($db, $enrol_query);				
 				while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
-					echo '<tr><td>'.$row['name'].'</td><td>'.$row['description'].'</td><td>'.$row['instructor_name'].'</td><td>'.$row['credit_hours'].'</td><td><a class="btn btn-primary" href="enrol.php?course_id='.$row['id'].'&sid='.$sid.'&enrol=true'.'">enrol</a></td></tr>';
+					$flag=false;
+									$enrols = mysqli_query($db, $enrol_query);				
+
+					while($enrolrow = mysqli_fetch_array($enrols,MYSQLI_ASSOC)) {
+						if($row['id']==$enrolrow['course_id']){
+							$flag=true;
+							break;							
+						}
+					}
+					if($flag==false)
+						echo '<tr><td>'.$row['name'].'</td><td>'.$row['description'].'</td><td>'.$row['instructor_name'].'</td><td>'.$row['credit_hours'].'</td><td><a class="btn btn-primary" href="enrol.php?course_id='.$row['id'].'&sid='.$sid.'&enrol=true'.'">enrol</a></td></tr>';
 				}
 
 				echo '</table>';
