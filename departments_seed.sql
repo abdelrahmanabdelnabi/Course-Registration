@@ -1,3 +1,5 @@
+use lab1;
+
 INSERT INTO departments (name, description, id) VALUES
 ("Computer and Communication Engineering", "student will learn how to program in several languages and Fundamentals of CS", 1),
 ("Electro-Mechanical Engineering", "student will learn the fundamentals of electrical and mechanical engineering and their composite applications", 2),

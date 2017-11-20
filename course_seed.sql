@@ -1,3 +1,5 @@
+use lab1;
+
 INSERT INTO courses (name, description, instructor_name, credit_hours, dept_id) VALUES
 ("programming", "conditional, looping, file I/O, structs, all in C", "Saleh El-Shehaby", 3, 1),
 ('database systems', 'data modelling, ER diagrams, SQL, query optimization, Indexes, and functional dependencies', "Yasser Fouad", 4, 1),
